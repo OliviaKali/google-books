@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Search from "./components/pages/Search";
+import Search from "./pages/Search";
 import Saved from "./components/pages/Saved";
 
 // import NavTabs from "./NavTabs";
@@ -12,10 +12,10 @@ function App() {
   return (
     <Router>
       <div>
-        <NavTabs />
+      
         <Route exact path="/" component={Search} />
         <Route exact path="/saved" component={Saved} />
-        {/* <Route path="/search" component={SearchResult} /> */}
+       
       </div>
     </Router>
   );

@@ -1,4 +1,5 @@
 import axios from "axios";
+import apiKey from "../../../keys"
 
 export default {
   // Gets all books
@@ -15,6 +16,12 @@ export default {
   },
   // Saves a book to the database
   saveBook: function(bookData) {
+    console.log(bookData);
     return axios.post("/api/books", bookData);
+  },
+  searchBook: function(bookData) {
+      console.log(BookData);
+      return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${bookData}&key=${apiKey}`)
   }
+
 };
