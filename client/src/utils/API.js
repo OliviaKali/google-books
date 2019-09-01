@@ -1,5 +1,5 @@
 import axios from "axios";
-import apiKey from "../../../keys"
+import apiKey from "./keys"
 
 export default {
   // Gets all books
@@ -20,7 +20,7 @@ export default {
     return axios.post("/api/books", bookData);
   },
   searchBook: function(bookData) {
-      console.log(BookData);
+      console.log(bookData);
       return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${bookData}&key=${apiKey}`)
   }
 

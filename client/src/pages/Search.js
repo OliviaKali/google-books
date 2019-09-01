@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import SearchBar from "../components/SearchBar";
+import {Container, Row, Col} from "../components/Grid"
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import API from "../utils/API";
 import ResultListItem from "../components/ResultList";
-// import {ResultList, RecipeListItem } from "../components/ResultList"
 
 class Search extends Component {
   state = {
@@ -14,7 +14,6 @@ class Search extends Component {
     description: "",
     image: "",
     link: ""
-    // date: new Date(Date.now())
   };
   // componentDidMount() {
   //   this.loadBooks();
@@ -44,16 +43,6 @@ class Search extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     API.searchBook(this.state.search)
-      // if (this.state.title && this.state.author) {
-      //   API.saveBook({
-      //     title: this.state.title,
-      //     author: this.state.author,
-      //     description: this.state.description,
-      //     image: this.state.image,
-      //     link: this.state.link,
-      //     date: this.state.date
-      // })
-      // .then(res => this.loadBooks())
       .then(res => this.setState({ books: res.data.items }))
       .catch(err => console.log(err));
   };
@@ -70,8 +59,19 @@ class Search extends Component {
     return (
       <div>
         <Jumbotron />
-        <SearchBar />
+        
+        <Container fluid>
+        <SearchBar 
+          value={this.state.search}
+          onChange={this.handleInputChange}
+          name="search"
+          placeholder="Search for a Book"
+          onClick={this.handleFormSubmit}
+          />
+          <button type="button" class="btn btn-secondary" onClick={this.handleFormSubmit}>Search</button>
         <h1>Book Results</h1>
+            <Row>
+            <Col size="md-12">
         {this.state.books.map(book => {
           return (
             <ResultListItem
@@ -80,9 +80,22 @@ class Search extends Component {
               title={book.title}
               author={book.author}
               description={book.description}
+              image={book.image}
+              link={book.link}
+              SavedBook={() => this.SavedBook({
+                id:book.id,
+                title:book.title,
+                author:book.author,
+                description:book.description,
+                image:book.image,
+                link:book.link
+              })}
             />
           );
         })}
+              </Col>
+          </Row>
+      </Container>
         {/* <ResultList>
             {this.state.recipes.map(recipe => (
                   <RecipeListItem 
