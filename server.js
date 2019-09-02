@@ -22,7 +22,7 @@ app.use(router);
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://root:password1@ds215988.mlab.com:15988/heroku_c2q4zvs7");
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
