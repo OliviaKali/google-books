@@ -22,8 +22,7 @@ class Search extends Component {
   // loadBooks = () => {
   //   API.getBooks()
   //     .then(res =>
-  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-  //     )
+  //       this.setState({ books: res.data, title: "", author: "", description: "" }))
   //     .catch(err => console.log(err));
   // };
 
@@ -68,6 +67,7 @@ class Search extends Component {
           placeholder="Search for a Book"
           />
           <button type="button" className="btn btn-secondary" onClick={this.handleFormSubmit}>Search</button>
+          {/* disabled={!(this.state.search)}  */}
         <h1>Book Results</h1>
             <Row>
             <Col size="md-12">
