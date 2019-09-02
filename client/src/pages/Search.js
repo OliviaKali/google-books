@@ -48,8 +48,8 @@ class Search extends Component {
   };
 
   SavedBook = data => {
-    console.log("Book saved")
-    console.log(data)
+    console.log("Book saved");
+    console.log(data);
     API.saveBook(data)
     .then(res => alert("Book Saved") && this.loadBooks())
     .catch(err => console.log(err));
@@ -66,49 +66,38 @@ class Search extends Component {
           onChange={this.handleInputChange}
           name="search"
           placeholder="Search for a Book"
-          onClick={this.handleFormSubmit}
           />
-          <button type="button" class="btn btn-secondary" onClick={this.handleFormSubmit}>Search</button>
+          <button type="button" className="btn btn-secondary" onClick={this.handleFormSubmit}>Search</button>
         <h1>Book Results</h1>
             <Row>
             <Col size="md-12">
-        {this.state.books.map(book => {
-          return (
-            <ResultListItem
-              key={book.id}
-              id={book.id}
-              title={book.title}
-              author={book.author}
-              description={book.description}
-              image={book.image}
-              link={book.link}
-              SavedBook={() => this.SavedBook({
-                id:book.id,
-                title:book.title,
-                author:book.author,
-                description:book.description,
-                image:book.image,
-                link:book.link
-              })}
-            />
-          );
-        })}
+            <div>
+                  {this.state.books.map(books => {
+                    return(
+                      <ResultListItem 
+                        key={books.id}
+                        title={books.volumeInfo.title}
+                        author={books.volumeInfo.authors}
+                        id={books.id}
+                        link={books.volumeInfo.previewLink}
+                        image={books.volumeInfo.imageLinks.thumbnail}
+                        description={books.volumeInfo.description}
+                        SavedBook={() => this.SavedBook({
+                          title: books.volumeInfo.title,
+                          author: books.volumeInfo.authors,
+                          id: books.id,
+                          link: books.volumeInfo.previewLink,
+                          image: books.volumeInfo.imageLinks.thumbnail,
+                          description: books.volumeInfo.description
+                        })}
+                      />   
+                      // <button type="button" className="btn btn-secondary" onClick={this.SavedBook}>Save Book</button> 
+                  );              
+                  })}                              
+               </div>
               </Col>
           </Row>
       </Container>
-        {/* <ResultList>
-            {this.state.recipes.map(recipe => (
-                  <RecipeListItem 
-                  key={recipe.title}
-                  title={recipe.title}
-                  author={recipe.author}
-                  description={recipe.description}
-                  image={recipe.image}
-                  link={recipe.link}
-                  date={recipe.date}
-                  />
-                ))}
-            </ResultList> */}
       </div>
     );
   }

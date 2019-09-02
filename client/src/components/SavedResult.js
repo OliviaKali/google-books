@@ -10,7 +10,7 @@ import { Container, Row, Col } from "../components/Grid/index";
 // }
 
 // RecipeListItem renders a bootstrap list item containing data from the recipe api call
-function ResultListItem(props) {
+function SavedResultListItem(props) {
   return (
     <li className="list-group-item">
       <Container>
@@ -29,7 +29,7 @@ function ResultListItem(props) {
             <p>
               Link to View Book: {props.link}
             </p>
-            <button type="button" className="btn btn-secondary" onClick={props.SavedBook}>Save Book</button>
+          
           </Col>
         </Row>
       </Container>
@@ -37,4 +37,4 @@ function ResultListItem(props) {
   );
 }
 
-export default ResultListItem;
+export default SavedResultListItem;
