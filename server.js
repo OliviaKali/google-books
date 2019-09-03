@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const router = require("./routes")
+const routes = require("./routes")
 
 var db = require("./models");
 
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.use(router);
+app.use(routes);
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });

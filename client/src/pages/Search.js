@@ -49,8 +49,10 @@ class Search extends Component {
   SavedBook = data => {
     console.log("Book saved");
     console.log(data);
+    const [author] = data.author
+    data.author = author
     API.saveBook(data)
-    .then(res => alert("Book Saved") && this.loadBooks())
+    .then(res => console.log(res))
     .catch(err => console.log(err));
   }
 

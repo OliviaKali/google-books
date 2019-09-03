@@ -20,6 +20,6 @@ export default {
   },
   searchBook: function(bookData) {
       console.log(bookData);
-      return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${bookData}&key=AIzaSyCwQj74Q_bQk2tnRLsSww9XIvt7oWe0Pa0`)
+      return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${bookData}&key=${process.env.REACT_APP_APIKEY}`)
   }
 };
