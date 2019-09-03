@@ -29,7 +29,7 @@ function SavedResultListItem(props) {
             <p>
               Link to View Book: {props.link}
             </p>
-          
+            <button className="btn btn-secondary" onClick={props.deleteBook}>Delete Book</button>        
           </Col>
         </Row>
       </Container>

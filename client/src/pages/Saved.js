@@ -44,8 +44,8 @@ class Saved extends Component {
                       image={book.image}
                       description={book.description}
                       deleteBook={() => this.deleteBook(book._id)}
-                      />    
-                  );              
+                      />   
+                  );      
                   })}                              
                </div>
                </Container>
